@@ -1,10 +1,14 @@
 from rest_framework import viewsets
-from .models import UserProfile, Course, Lesson, Enrollment
-from .serializers import UserProfileSerializer, CourseSerializer, LessonSerializer, EnrollmentSerializer
+from .models import UserProfile, Course, Lesson, Enrollment, Category
+from .serializers import UserProfileSerializer, CourseSerializer, LessonSerializer, EnrollmentSerializer, CategorySerializer
 
 class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
 class CourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()

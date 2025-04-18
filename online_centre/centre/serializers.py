@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from rest_framework.exceptions import ValidationError
-from .models import UserProfile, Course, Lesson, Enrollment
+from .models import UserProfile, Course, Lesson, Enrollment, Category
 
 class UserProfileSerializer(ModelSerializer):
     class Meta:
@@ -29,6 +29,10 @@ class CourseSerializer(ModelSerializer):
                 raise ValidationError("Narx manfiy bo'lishi mumkin emas")
             return attrs
 
+class CategorySerializer(ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
 
 class LessonSerializer(ModelSerializer):
     class Meta:
@@ -43,4 +47,4 @@ class LessonSerializer(ModelSerializer):
 class EnrollmentSerializer(ModelSerializer):
     class Meta:
         model = Enrollment
-        fields = ['student', 'lesson']
+        fields = ['student', 'course_id']
